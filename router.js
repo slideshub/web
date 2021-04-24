@@ -16,14 +16,15 @@ export default class Router {
 
     static get query() {
         const text = location.hash.slice(2).split("?")[1]
-        
-        let result = text.split("&")
-
-        result = result.map(value => value.split("="))
-        
         let object = {}
-        
-        result.map(value => object[value[0]] = value[1])
+        if(text){
+            let result = text.split("&")
+            
+            result = result.map(value => value.split("="))
+            
+            
+            result.map(value => object[value[0]] = value[1])
+        }
         
         return object
     }

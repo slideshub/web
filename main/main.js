@@ -4,7 +4,7 @@ export default class Main {
 
 
     async render() {
-        const node = await TemplatesManager.get('main')
+        const node = await TemplatesManager.get('main/main')
 
         return node
     }

@@ -4,7 +4,7 @@ export default class TemplatesManager {
     
     static async get(name, object = {}){
         if(templates[name] === undefined){
-            const template = await (await fetch(`./${name}/${name}.html`)).text()
+            const template = await (await fetch(`./${name}.html`)).text()
 
             templates[name] = template
         }
