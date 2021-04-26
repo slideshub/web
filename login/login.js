@@ -34,6 +34,7 @@ export default class Login extends Component {
 
 
     async render(){
+        title.innerHTML = "Login - Slideshub"
 
         const node = await TemplatesManager.get('login/login', {title: "Mi título bonito"})
 

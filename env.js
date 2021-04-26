@@ -1,1 +1,1 @@
-export const API_URL = "https://slideshub.herokuapp.com"
+export const API_URL = "https://slideshub.herokuapp.com/index.php"
