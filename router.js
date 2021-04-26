@@ -34,7 +34,7 @@ export default class Router {
 
     static initialConfig() {
         if (location.hash == "")
-            location.assign("./#/")
+            location.assign("./#/slides")
 
         if (!Auth.logged)
             Router.goTo("login")
