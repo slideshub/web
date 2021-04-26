@@ -1,6 +1,11 @@
+import Component from "../common/Component.js"
 import TemplatesManager from "../common/TemplatesManager.js"
 
-export default class Main {
+export default class Main extends Component {
+
+    constructor(){
+        super()
+    }
 
 
     async render() {

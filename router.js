@@ -1,10 +1,13 @@
+import Auth from "./auth/Auth.js"
 import Login from "./login/login.js"
 import Main from "./main/main.js"
+import Slides from "./slides/slides.js"
 
 
 const routes = {
     'login': Login,
-    'main': Main
+    'main': Main,
+    'slides': Slides,
 }
 
 
@@ -33,19 +36,21 @@ export default class Router {
         if (location.hash == "")
             location.assign("./#/")
 
-        Router.goTo("login", {id: 1245, game: "foi"})
+        if (!Auth.logged)
+            Router.goTo("login")
         
-        Router.loadRoute()
-        
-        window.addEventListener("hashchange", Router.loadRoute)
+        Router.loadRoute().then(
+            () => window.addEventListener("hashchange", Router.loadRoute)
+        )
     }
 
-    static async loadRoute(e) {
+    static async loadRoute() {
         const node = new routes[Router.route](Router.query)
 
         document.getElementById('root').innerHTML = ""
         document.getElementById('root').appendChild(await node.render())
     }
+
 
     static goTo(route, querys) {
         if(!querys)
