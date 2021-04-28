@@ -38,12 +38,16 @@ export default class Router {
         if (location.hash == "")
             location.assign("./#/presentations")
 
-        if (!Auth.logged)
-            Router.goTo("login")
-        
-        Router.loadRoute().then(
-            () => window.addEventListener("hashchange", Router.loadRoute)
+        Auth.isLogged().then(
+            isLogged => {
+                if(!isLogged)
+                    Router.goTo("login")
+                Router.loadRoute().then(
+                    () => window.addEventListener("hashchange", Router.loadRoute)
+                )
+            }
         )
+        
     }
 
     static async loadRoute() {

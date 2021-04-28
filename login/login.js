@@ -1,7 +1,7 @@
 import Component from "../common/Component.js"
 import TemplatesManager from "../common/TemplatesManager.js"
 import Router from "../router.js"
-import LoginAPI from "./loginAPI.js"
+import AuthAPI from "../auth/AuthAPI.js"
 
 
 export default class Login extends Component {
@@ -18,12 +18,11 @@ export default class Login extends Component {
         e.stopPropagation()
 
 
-        LoginAPI.login(email_input.value, password_input.value).then(
+        AuthAPI.login(email_input.value, password_input.value).then(
             response => {
                 if (response.ok) {
                     response.json().then(
                         userData => {
-                            sessionStorage.setItem('u', JSON.stringify(userData))
                             Router.goTo('presentations')
                         }
                     )

@@ -44,7 +44,7 @@ input {
     font-size: 14px;
 }
 
-button {
+button, .button {
     padding: 12px 20px;
     background-color: white;
     border: 1px solid gray;
@@ -54,11 +54,11 @@ button {
     letter-spacing: 1px;
 }
 
-button:hover {
-    filter: brightness(0.9);
+button:hover, .button:hover {
+    filter: brightness(0.95);
 }
 
-button[color="primary"] {
+button[color="primary"], .button[color="primary"] {
     background-color: var(--primary);
     color: white;
     border: none;

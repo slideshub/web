@@ -5,9 +5,8 @@ export default class APIUtils {
         
         let options = {
             method: 'GET',
-            referrerPolicy: 'no-referrer',
-            mode: 'cors',
-            headers: {}
+            headers: {},
+            credentials: 'include'
         }
 
         try {
@@ -18,13 +17,13 @@ export default class APIUtils {
         return response
     }
 
-    static async POST(url, body) {
+    static async POST(url, body = {}) {
         let options = {
             method: 'POST',
-            mode: 'cors',
             headers: {
                 "Content-Type": "application/json"
             },
+            credentials: 'include',
             body: JSON.stringify(body)
         }
 
@@ -40,10 +39,10 @@ export default class APIUtils {
     static async PATCH(url, body) {
         let options = {
             method: 'PATCH',
-            mode: 'cors',
             headers: {
                 "Content-Type": "application/json"
             },
+            credentials: 'include',
             body: JSON.stringify(body)
         }
 
@@ -61,8 +60,7 @@ export default class APIUtils {
         
         let options = {
             method: 'DELETE',
-            referrerPolicy: 'no-referrer',
-            mode: 'cors',
+            credentials: 'include',
             headers: {}
         }
 

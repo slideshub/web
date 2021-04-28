@@ -17,3 +17,51 @@
 .presentations-title {
     color: var(--primary)
 }
+
+.presentations-add-button {
+    margin: auto 20px;
+    color: var(--primary);
+    border-color: var(--primary) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    position: relative;
+}
+
+.presentations-add-button:hover {
+    filter: none !important;
+    background-color: rgb(245, 245, 245) !important;
+}
+
+.presentations-add-popover {
+    position: absolute;
+    top: calc(100% + 1px);
+    background-color: white;
+    height: 0px;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+    border-radius: 5px;
+    width: 200px;
+    left: 50%;
+    opacity: 0;
+    transition: height 0.3s;
+    cursor: default;
+    padding: 10px;
+    color: rgb(61, 61, 61);
+    overflow: hidden;
+    
+}
+
+.presentations-add-popover>form {
+    display: flex;
+    flex-direction: column;
+}
+
+.presentations-add-popover>form>*{
+    margin: 10px auto;
+}
+
+[active='true'] .presentations-add-popover {
+    opacity: 1;
+    height: 170px;
+}
