@@ -2,6 +2,6 @@
 export default class Auth {
 
     static get logged(){
-        return false
+        return sessionStorage.getItem('u') !== null
     }
 }

@@ -1,0 +1,43 @@
+.toolbar {
+    height: 44px;
+    width: calc(100% - 20px);
+    background-color: var(--primary);
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+    padding: 10px;
+}
+
+.toolbar img {
+    width: auto;
+    height: 100%;
+}
+
+.toolbar>div{
+    height: 100%;
+    display: flex;
+}
+
+.toolbar span {
+    color: white;
+    font-family: 'Jua', sans-serif;
+    margin: auto 10px;
+    font-size: 30px;
+    font-weight: 100;
+}
+
+.toolbar a {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    margin: auto 10px;
+    padding: 10px;
+    border-radius: 6px;
+    transition: background-color 0.5s;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.toolbar a:hover {
+    background-color: rgba(0, 0, 0, 0.068);
+}

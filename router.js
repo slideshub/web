@@ -1,6 +1,7 @@
 import Auth from "./auth/Auth.js"
 import Login from "./login/login.js"
 import Main from "./main/main.js"
+import Presentations from "./presentations/presentations.js"
 import Slides from "./slides/slides.js"
 
 
@@ -8,6 +9,7 @@ const routes = {
     'login': Login,
     'main': Main,
     'slides': Slides,
+    'presentations': Presentations,
 }
 
 
@@ -34,7 +36,7 @@ export default class Router {
 
     static initialConfig() {
         if (location.hash == "")
-            location.assign("./#/slides")
+            location.assign("./#/presentations")
 
         if (!Auth.logged)
             Router.goTo("login")

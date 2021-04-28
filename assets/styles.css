@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+@import "./loader.css";
 @import "../login/login.css";
+@import "../presentations/presentations.css";
+@import "../common/views/toolbar.css";
+
 :root {
     --primary: #29ABE2
 }
@@ -10,8 +15,21 @@ body {
 }
 
 #root {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
+}
+
+#loading {
+    position: fixed;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.467);
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+#loading[active="true"]{
+    display: flex;
 }
 
 .logo-font {
