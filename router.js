@@ -22,15 +22,15 @@ export default class Router {
     static get query() {
         const text = location.hash.slice(2).split("?")[1]
         let object = {}
-        if(text){
+        if (text) {
             let result = text.split("&")
-            
+
             result = result.map(value => value.split("="))
-            
-            
+
+
             result.map(value => object[value[0]] = value[1])
         }
-        
+
         return object
     }
 
@@ -38,30 +38,27 @@ export default class Router {
         if (location.hash == "")
             location.assign("./#/presentations")
 
-        Auth.isLogged().then(
-            isLogged => {
-                if(!isLogged)
-                    Router.goTo("login")
-                Router.loadRoute().then(
-                    () => window.addEventListener("hashchange", Router.loadRoute)
-                )
-            }
-        )
-        
+        Router.loadRoute()
+        window.addEventListener("hashchange", Router.loadRoute)
     }
 
     static async loadRoute() {
-        const node = new routes[Router.route](Router.query)
+        const isLogged = await Auth.isLogged()
+        if (!isLogged && Router.route !== 'login')
+            Router.goTo("login")
+        else {
+            const node = new routes[Router.route](Router.query)
 
-        document.getElementById('root').innerHTML = ""
-        document.getElementById('root').appendChild(await node.render())
+            document.getElementById('root').innerHTML = ""
+            document.getElementById('root').appendChild(await node.render())
+        }
     }
 
 
     static goTo(route, querys) {
-        if(!querys)
+        if (!querys)
             location.hash = `#/${route}`
-        else{
+        else {
             location.hash = `#/${route}?${Object.entries(querys).map(value => value.join("=")).join("&")}`
         }
     }

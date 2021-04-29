@@ -8,10 +8,13 @@
     border-radius: 10px;
     border: 2px solid rgb(226, 226, 226);
     margin: 15px;
-    min-width: 200px;
-    max-width: 200px;
+    min-width: 220px;
+    max-width: 220px;
     min-height: 80px;
     max-height: 80px;
+}
+.presentation_item.loading {
+    border: none;
 }
 
 .presentations-title {
