@@ -12,7 +12,14 @@
     max-width: 220px;
     min-height: 80px;
     max-height: 80px;
+    cursor: pointer;
+    background-color: white;
 }
+
+.presentation_item:hover {
+    filter: brightness(0.98);
+}
+
 .presentation_item.loading {
     border: none;
 }

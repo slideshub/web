@@ -6,7 +6,6 @@ export default class Auth {
     static async isLogged(){
         const response = await AuthAPI.getLoggedUser()
         if(response.ok){
-            response.json().then(v => console.log(v))
             return true
         }
         else{

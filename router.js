@@ -1,6 +1,7 @@
 import Auth from "./auth/Auth.js"
 import Login from "./login/login.js"
 import Main from "./main/main.js"
+import Presentation from "./presentation/presentation.js"
 import Presentations from "./presentations/presentations.js"
 import Slides from "./slides/slides.js"
 
@@ -10,6 +11,7 @@ const routes = {
     'main': Main,
     'slides': Slides,
     'presentations': Presentations,
+    'presentation': Presentation,
 }
 
 

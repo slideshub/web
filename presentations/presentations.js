@@ -2,6 +2,7 @@ import Auth from "../auth/Auth.js";
 import Component from "../common/Component.js";
 import TemplatesManager from "../common/TemplatesManager.js";
 import Toast from "../common/Toast.js";
+import Router from "../router.js";
 import PresentationsAPI from "./presentationsAPI.js";
 
 
@@ -31,6 +32,7 @@ export default class Presentations extends Component {
             
             this.myPresentations.forEach(item => {
                 TemplatesManager.get('presentations/presentation_item', item).then(child => {
+                    child.addEventListener('click', ()=> Router.goTo('presentation', {id: item.id}))
                     container.appendChild(child)
                 })
             })
@@ -45,7 +47,7 @@ export default class Presentations extends Component {
 
             this.publicPresentations.forEach(item => {
                 TemplatesManager.get('presentations/presentation_item', item).then(child => {
-                    child.addEventListener('click', ()=> Toast.open(item.nombre, 'info'))
+                    child.addEventListener('click', ()=> Router.goTo('presentation', {id: item.id}))
                     container.appendChild(child)
                 })
             })
