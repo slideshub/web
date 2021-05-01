@@ -3,6 +3,8 @@ import AuthAPI from "./AuthAPI.js";
 
 export default class Auth {
 
+    static loggedUser = null;
+
     static async isLogged(){
         const response = await AuthAPI.getLoggedUser()
         if(response.ok){
@@ -10,6 +12,16 @@ export default class Auth {
         }
         else{
             return false
+        }
+    }
+
+    static async getUser(){
+        const response = await AuthAPI.getLoggedUser()
+        if(response.ok){
+            return await response.json()
+        }
+        else{
+            return undefined
         }
     }
 

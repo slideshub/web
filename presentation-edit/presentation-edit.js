@@ -1,3 +1,4 @@
+import Auth from "../auth/Auth.js";
 import Component from "../common/Component.js";
 import TemplatesManager from "../common/TemplatesManager.js";
 import Toast from "../common/Toast.js";
@@ -5,13 +6,15 @@ import PresentationsAPI from "../presentations/presentationsAPI.js";
 import Router from "../router.js";
 
 
-export default class Presentation extends Component {
+export default class PresentationEdit extends Component {
 
     node = null
 
     id = null
 
     presentation = null
+
+    slides = []
 
     constructor(querys) {
         super()
@@ -34,20 +37,17 @@ export default class Presentation extends Component {
             title.innerHTML = `${this.presentation.nombre} - Slideshub`
 
             let vars = {}
-            vars.toolbar = (await TemplatesManager.get('common/views/toolbar')).outerHTML
+            vars.presentation = this.presentation
 
-            this.node = await TemplatesManager.get('presentation/presentation', vars)
+            this.node = await TemplatesManager.get('presentation-edit/presentation-edit', vars)
 
             //this.configureAddEventListener()
             this.configLogout()
+
             loading.setAttribute("active", "false")
             return this.node;
         }
         loading.setAttribute("active", "false")
         return null
-
-
-
-
     }
 }

@@ -10,7 +10,7 @@
 }
 
 .toolbar img {
-    width: auto;
+    width: 44px;
     height: 100%;
 }
 
@@ -27,7 +27,7 @@
     font-weight: 100;
 }
 
-.toolbar a {
+.toolbar #logout {
     color: white;
     cursor: pointer;
     text-decoration: none;
@@ -38,6 +38,6 @@
     background-color: rgba(0, 0, 0, 0);
 }
 
-.toolbar a:hover {
+.toolbar #logout:hover {
     background-color: rgba(0, 0, 0, 0.068);
 }

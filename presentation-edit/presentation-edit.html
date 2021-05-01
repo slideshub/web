@@ -1,0 +1,32 @@
+<div class="toolbar">
+    <div>
+        <a href="./#/presentations">
+            <img src="assets/images/logo-white.png" alt="Slideshub logo">
+        </a>
+        <span>{presentation.nombre}</span>
+    </div>
+    <div>
+        <a id="logout">
+            Cerrar sesión
+        </a>
+    </div>
+</div>
+<div style="display: flex; height: calc(100% - 64px);">
+    <div class="sidebar">
+        <div style="display: flex; margin: 5px 10px; justify-content: space-between;">
+            <h4 class="slides-list-title">Diapositivas</h4>
+            <button class="slides-add-new">
+                <i class="fas fa-plus" style="margin-right: 10px;"></i>
+                Nueva
+            </button>
+        </div>
+        <div class="slides-list-container" id="slides_list_container">
+            <div class="slides-list-item loading"></div>
+            <div class="slides-list-item loading"></div>
+            <div class="slides-list-item loading"></div>
+        </div>
+    </div>
+    <div class="slide-container">
+
+    </div>
+</div>

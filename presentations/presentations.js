@@ -30,12 +30,18 @@ export default class Presentations extends Component {
             const container = this.node.querySelector('#my_presentation_items_container')
             container.innerHTML = ''
             
-            this.myPresentations.forEach(item => {
-                TemplatesManager.get('presentations/presentation_item', item).then(child => {
-                    child.addEventListener('click', ()=> Router.goTo('presentation', {id: item.id}))
-                    container.appendChild(child)
+            if(this.myPresentations.length > 0){
+                
+                this.myPresentations.forEach(item => {
+                    TemplatesManager.get('presentations/presentation_item', item).then(child => {
+                        child.addEventListener('click', ()=> Router.goTo('presentation/edit', {id: item.id}))
+                        container.appendChild(child)
+                    })
                 })
-            })
+            }
+            else{
+                container.innerHTML = "No tienes presentaciones todavía"
+            }
         }
         
         const response2 = await PresentationsAPI.getPresentations(8)
@@ -45,12 +51,19 @@ export default class Presentations extends Component {
             const container = this.node.querySelector('#public_presentation_items_container')
             container.innerHTML = ''
 
-            this.publicPresentations.forEach(item => {
-                TemplatesManager.get('presentations/presentation_item', item).then(child => {
-                    child.addEventListener('click', ()=> Router.goTo('presentation', {id: item.id}))
-                    container.appendChild(child)
+            if(this.publicPresentations.length > 0){
+
+                this.publicPresentations.forEach(item => {
+                    TemplatesManager.get('presentations/presentation_item', item).then(child => {
+                        child.addEventListener('click', 
+                        ()=> Router.goTo(item.id_usuario === Auth.loggedUser.id? 'presentation/edit': 'presentation', {id: item.id}))
+                        container.appendChild(child)
+                    })
                 })
-            })
+            }
+            else{
+                container.innerHTML = "No existen presentaciones públicas todavía"
+            }
         }
         else{
             Toast.open("Error al obtener las presentaciones públicas", 'error')

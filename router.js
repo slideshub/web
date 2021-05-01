@@ -1,6 +1,7 @@
 import Auth from "./auth/Auth.js"
 import Login from "./login/login.js"
 import Main from "./main/main.js"
+import PresentationEdit from "./presentation-edit/presentation-edit.js"
 import Presentation from "./presentation/presentation.js"
 import Presentations from "./presentations/presentations.js"
 import Slides from "./slides/slides.js"
@@ -12,6 +13,7 @@ const routes = {
     'slides': Slides,
     'presentations': Presentations,
     'presentation': Presentation,
+    'presentation/edit': PresentationEdit
 }
 
 
@@ -45,14 +47,16 @@ export default class Router {
     }
 
     static async loadRoute() {
-        const isLogged = await Auth.isLogged()
-        if (!isLogged && Router.route !== 'login')
+        const loggedUser = await Auth.getUser()
+        if (!loggedUser && Router.route !== 'login')
             Router.goTo("login")
         else {
-            const node = new routes[Router.route](Router.query)
-
-            document.getElementById('root').innerHTML = ""
-            document.getElementById('root').appendChild(await node.render())
+            Auth.loggedUser = loggedUser
+            const node = await (new routes[Router.route](Router.query)).render()
+            if(node !== null){
+                document.getElementById('root').innerHTML = ""
+                document.getElementById('root').appendChild(node)
+            }
         }
     }
 

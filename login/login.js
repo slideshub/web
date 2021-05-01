@@ -2,6 +2,8 @@ import Component from "../common/Component.js"
 import TemplatesManager from "../common/TemplatesManager.js"
 import Router from "../router.js"
 import AuthAPI from "../auth/AuthAPI.js"
+import Toast from "../common/Toast.js"
+import Auth from "../auth/Auth.js"
 
 
 export default class Login extends Component {
@@ -23,15 +25,16 @@ export default class Login extends Component {
                 if (response.ok) {
                     response.json().then(
                         userData => {
+                            Auth.loggedUser = userData
                             Router.goTo('presentations')
                         }
                     )
                 }
                 else if (response.status == 401) {
-                    alert("Credenciales inválidas")
+                    Toast.open("Credenciales inválidas", 'error')
                 }
                 else {
-                    alert("Error al conectarse con el servidor")
+                    Toast.open("Error al conectarse con el servidor", 'error')
                 }
                 loading.setAttribute("active", "false")
             }

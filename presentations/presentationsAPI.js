@@ -1,12 +1,14 @@
 import APIUtils from "../common/APIUtils.js"
+import Toast from "../common/Toast.js"
 import { API_URL } from "../env.js"
+import Router from "../router.js"
 
 
 export default class PresentationsAPI {
 
     static loadedPresentations = []
 
-    static module = "presentation"
+    static module = "presentations"
 
     static async getPresentations(quantity = 0) {
         return APIUtils.GET(`${API_URL}/${PresentationsAPI.module}/`, {mine: false, quantity})
@@ -35,11 +37,30 @@ export default class PresentationsAPI {
             return presentation
         }
         else if (response.status == 404){
-            Toast.open((await response.json()).message)
+            Toast.open((await response.json()).message, 'error')
             Router.goTo('presentations')
         }
         else {
-            Toast.open((await response.json()).message)
+            Toast.open((await response.json()).message, 'error')
+        }
+
+        return undefined
+    }
+
+    static async getPresentationSlides(id = 0) {
+        const response = await APIUtils.GET(`${API_URL}/${PresentationsAPI.module}/${id}/slides`)
+
+        if(response.ok){
+            let presentation = await response.json()
+            PresentationsAPI.loadedPresentations.push(presentation)
+            return presentation
+        }
+        else if (response.status == 404){
+            Toast.open((await response.json()).message, 'error')
+            Router.goTo('presentations')
+        }
+        else {
+            Toast.open((await response.json()).message, 'error')
         }
 
         return undefined
