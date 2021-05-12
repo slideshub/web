@@ -1,0 +1,120 @@
+<div class="slide-container">
+    <div class="slide-toolbar">
+        <div>
+            <b style="margin-right: 5px;">
+                ID {slide.id}
+            </b>
+            <input type="text" class="slide-name-input" value="{slide.nombre}" placeholder="Nombre">
+        </div>
+        <div class="slide-toolbar-size">
+            <input id="slide_size_x_input" value="{sizeX}" pattern="[0-9]">
+            x
+            <input id="slide_size_y_input" value="{sizeY}">
+
+        </div>
+        <div class="slide-toolbar-actions">
+            <button id="save_slide">
+                <i class="far fa-save"></i>
+            </button>
+            <button id="delete_slide">
+                <i class="far fa-trash-alt"></i>
+            </button>
+        </div>
+    </div>
+    <div style="display: flex; width: calc(100% - 60px); height: calc(100% - 42px); flex-direction: row;">
+        <div class="slide-details-edit">
+            <div>
+                <h4>Borde</h4>
+                <div>
+                    <span>
+                        Ancho
+                    </span>
+                    <select name="borderWidth" id="borderWitdh">
+                        <option value="5px">5px</option>
+                        <option value="6px">6px</option>
+                        <option value="7px">7px</option>
+                        <option value="8px">8px</option>
+                        <option value="9px">9px</option>
+                        <option value="10px">10px</option>
+                        <option value="11px">11px</option>
+                        <option value="12px">12px</option>
+                        <option value="13px">13px</option>
+                        <option value="14px">14px</option>
+                        <option value="15px">15px</option>
+                    </select>
+                </div>
+                <div>
+                    <span>
+                        Redondeo
+                    </span>
+                    <select name="borderRadius" id="borderRadius">
+                        <option value="5px">5px</option>
+                        <option value="6px">6px</option>
+                        <option value="7px">7px</option>
+                        <option value="8px">8px</option>
+                        <option value="9px">9px</option>
+                        <option value="10px">10px</option>
+                        <option value="11px">11px</option>
+                        <option value="12px">12px</option>
+                        <option value="13px">13px</option>
+                        <option value="14px">14px</option>
+                        <option value="15px">15px</option>
+                        <option value="16px">16px</option>
+                        <option value="17px">17px</option>
+                        <option value="18px">18px</option>
+                        <option value="19px">19px</option>
+                        <option value="20px">20px</option>
+                    </select>
+                </div>
+                <div>
+                    <span>Color</span>
+                    <input type="color" name="" id="borderColor" style="padding: 2px;" value="#808080">
+                </div>
+            </div>
+            <div>
+                <h4>Fondo</h4>
+                <div>
+                    <span>Color</span>
+                    <input type="color" name="" id="bgColor" style="padding: 2px;" value="#ffffff">
+                </div>
+                <div style="justify-content: flex-start;">
+                    <span>Con degradado</span>
+                    <input type="checkbox" name="" id="bgColor2Checkbox" style="margin-left: 10px;">
+                </div>
+                <div disabled="true" id="bgColor2Container">
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;Segundo color</span>
+                    <input type="color" name="" id="bgColor2" style="padding: 2px;" disabled="true" value="#ffffff">
+                </div>
+            </div>
+            <div>
+                <h4>Transición</h4>
+                <div>
+                    <span>
+                        Tipo
+                    </span>
+                    <select name="transtition" id="transitionSelect">
+                        <option value="0">Desde arriba</option>
+                        <option value="1">Desde abajo</option>
+                        <option value="2">Desde izquierda</option>
+                        <option value="3">Desde derecha</option>
+                        <option value="4">Degradado</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <h4>Hipervículos</h4>
+                <div class="slide-edit-links">
+
+                </div>
+                <div>
+                    <input type="number" id="new_reference_input" style="padding: 3px 10px; border: 1px solid gray; width: 50%;" placeholder="Id del slide">
+                    <i class="far fa-plus-square" id="add_reference" style="font-size: 20px; cursor: pointer; margin: auto;"></i>
+                </div>
+            </div>
+        </div>
+        <div class="slide-edit-container" style="--sizeX: 800; --sizeY: 600">
+            <div class="tinymceContainer"></div>
+
+        </div>
+    </div>
+</div>

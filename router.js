@@ -4,13 +4,11 @@ import Main from "./main/main.js"
 import PresentationEdit from "./presentation-edit/presentation-edit.js"
 import Presentation from "./presentation/presentation.js"
 import Presentations from "./presentations/presentations.js"
-import Slides from "./slides/slides.js"
 
 
 const routes = {
     'login': Login,
     'main': Main,
-    'slides': Slides,
     'presentations': Presentations,
     'presentation': Presentation,
     'presentation/edit': PresentationEdit

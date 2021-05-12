@@ -51,18 +51,22 @@ export default class PresentationsAPI {
         const response = await APIUtils.GET(`${API_URL}/${PresentationsAPI.module}/${id}/slides`)
 
         if(response.ok){
-            let presentation = await response.json()
-            PresentationsAPI.loadedPresentations.push(presentation)
-            return presentation
+            let presentationSlides = await response.json()
+            PresentationsAPI.loadedPresentations.push(presentationSlides)
+            presentationSlides.forEach(element => element.detalles = element.detalles == null? {}: JSON.parse(element.detalles));
+            return presentationSlides
         }
         else if (response.status == 404){
             Toast.open((await response.json()).message, 'error')
-            Router.goTo('presentations')
         }
         else {
             Toast.open((await response.json()).message, 'error')
         }
 
         return undefined
+    }
+
+    static async createSlide(id_presentation = 0, name = null) {
+        return APIUtils.POST(`${API_URL}/${PresentationsAPI.module}/${id_presentation}/slides`, {name})
     }
 }

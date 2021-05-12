@@ -44,7 +44,7 @@ export default class Presentations extends Component {
             }
         }
         
-        const response2 = await PresentationsAPI.getPresentations(8)
+        const response2 = await PresentationsAPI.getPresentations()
         if(response2.ok){
             this.publicPresentations = await response2.json()
 

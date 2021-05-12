@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
+@import "../common/views/toolbar.css";
 @import "./loader.css";
 @import "./toast.css";
 @import "../login/login.css";
 @import "../presentations/presentations.css";
 @import "../presentation/presentation.css";
 @import "../presentation-edit/presentation-edit.css";
-@import "../common/views/toolbar.css";
+@import "../slide/slide.css";
 
 :root {
     --primary: #29ABE2

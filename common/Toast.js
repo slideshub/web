@@ -5,7 +5,7 @@ export default class Toast {
 
     static timeout = null
 
-    static open(message, severity, ms = 4000){
+    static open(message, severity = 'info', ms = 4000){
         if(Toast.timeout != null){
             clearTimeout(Toast.timeout)
         }
