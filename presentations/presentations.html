@@ -1,43 +1,48 @@
 {toolbar}
-<div style="padding: 20px;">
-    
-    <div style="display: flex;">
-        <h2 class="presentations-title">
-            Mis presentaciones
-        </h2>
-        <div id="addNewPresentation" class="button presentations-add-button">
-            <i class="fas fa-plus" style="margin-right: 10px;"></i>
-            Nueva
-            <div onclick="event.stopPropagation()" class="presentations-add-popover">
-                <form id="addNewPresentationForm">
-                    <input type="text" placeholder="Nombre" name="name" id="new_presentation_name" required>
-                    <div>
-                        <input type="checkbox" name="public" id="new_presentation_public"> Pública
+<div style="padding: 20px; max-width: 1200px; margin: auto">
+
+    <div id="myPresentationsContained">
+        <div style="display: flex; width: 100%; flex-wrap: wrap; justify-content: space-between">
+            <div style="display: flex">
+                <h2 class="presentations-title">Mis presentaciones</h2>
+                <div id="addNewPresentation" class="button presentations-add-button">
+                    <i class="fas fa-plus" style="margin-right: 10px"></i>
+                    Nueva
+                    <div onclick="event.stopPropagation()" class="presentations-add-popover">
+                        <form id="addNewPresentationForm">
+                            <input type="text" placeholder="Nombre" name="name" id="new_presentation_name" required />
+                            <div>
+                                <input type="checkbox" name="public" id="new_presentation_public" />
+                                Pública
+                            </div>
+                            <button color="primary">Añadir</button>
+                        </form>
                     </div>
-                    <button color="primary">
-                        Añadir
-                    </button>
-                </form>
+                </div>
+            </div>
+            <div style="margin: auto 0">
+                <input type="text" placeholder="Buscar..." id="input_filter_my_presentations">
             </div>
         </div>
+        <div class="presentations-items-container" id="my_presentation_items_container">
+            <div class="presentation_item loading"></div>
+            <div class="presentation_item loading"></div>
+            <div class="presentation_item loading"></div>
+            <div class="presentation_item loading"></div>
+        </div>
     </div>
-    <div class="presentations-items-container" id="my_presentation_items_container">
-        <div class="presentation_item loading"></div>
-        <div class="presentation_item loading"></div>
-        <div class="presentation_item loading"></div>
-        <div class="presentation_item loading"></div>
 
+    <div style="display: flex; width: 100%; flex-wrap: wrap; justify-content: space-between">
+        <h2 class="presentations-title">Presentaciones públicas</h2>
+        <div style="margin: auto 0">
+            <input type="text" placeholder="Buscar..." id="input_filter_presentations">
+        </div>
     </div>
-    
-    <h2 class="presentations-title">
-        Presentaciones públicas
-    </h2>
     <div class="presentations-items-container" id="public_presentation_items_container">
         <div class="presentation_item loading"></div>
         <div class="presentation_item loading"></div>
         <div class="presentation_item loading"></div>
         <div class="presentation_item loading"></div>
         <div class="presentation_item loading"></div>
-
     </div>
 </div>

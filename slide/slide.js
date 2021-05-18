@@ -13,6 +13,7 @@ export default class Slide extends Component {
   constructor(props) {
     super();
 
+    this.presentation_id = props.presentation_id
     this.slide_id = props.slide_id;
     this.slide = props.slide;
 
@@ -308,6 +309,7 @@ export default class Slide extends Component {
         slide: this.slide,
         sizeX,
         sizeY,
+        presentation_id: this.presentation_id
       });
 
       this.configureTinyMCE(sizeX, sizeY);

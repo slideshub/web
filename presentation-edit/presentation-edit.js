@@ -65,7 +65,7 @@ export default class PresentationEdit extends Component {
             this.current_slide_id = slide_id
             const container = this.node.querySelector('#slide_container')
             container.innerHTML = ''
-            container.appendChild(await (new Slide({ slide_id, slide, refresh: this.refreshSlides.bind(this) })).render())
+            container.appendChild(await (new Slide({ slide_id, slide, presentation_id: this.id, refresh: this.refreshSlides.bind(this) })).render())
         }
     }
 
@@ -99,7 +99,7 @@ export default class PresentationEdit extends Component {
                 }
             }
             else {
-                container.innerHTML = "No tienes presentaciones todavía"
+                container.innerHTML = "<div style='padding: 20px; text-align: center; color: gray'>No tienes diapositivas todavía</div>"
             }
         }
     }

@@ -43,10 +43,11 @@ export default class Login extends Component {
 
 
     async render() {
+        Auth.logout()
         sessionStorage.removeItem('u')
         title.innerHTML = "Login - Slideshub"
 
-        const node = await TemplatesManager.get('login/login', { title: "Mi título bonito" })
+        const node = await TemplatesManager.get('login/login')
 
         node.querySelector("#login_form").addEventListener("submit", this.onSubmit)
 

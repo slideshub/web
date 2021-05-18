@@ -5,15 +5,7 @@ export default class Auth {
 
     static loggedUser = null;
 
-    static async isLogged(){
-        const response = await AuthAPI.getLoggedUser()
-        if(response.ok){
-            return true
-        }
-        else{
-            return false
-        }
-    }
+    static isLogged = false;
 
     static async getUser(){
         const response = await AuthAPI.getLoggedUser()
@@ -26,6 +18,8 @@ export default class Auth {
     }
 
     static async logout(){
+        Auth.loggedUser = undefined
+        Auth.isLogged = false
         await AuthAPI.logout()
         Router.goTo('login')
     }

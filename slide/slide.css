@@ -55,7 +55,7 @@
     flex-direction: row;
 }
 
-.slide-toolbar-actions button {
+.slide-toolbar-actions button, .slide-toolbar-actions .button  {
     padding: 2px;
     font-size: 18px;
     width: 30px;
@@ -69,7 +69,13 @@
     transition: background-color 0.3s;
 }
 
-.slide-toolbar-actions button:hover {
+.slide-toolbar-actions .button {
+    width: 26px;
+    height: 26px;
+    text-decoration: none;
+}
+
+.slide-toolbar-actions button:hover, .slide-toolbar-actions .button:hover  {
     background-color: rgba(0, 0, 0, 0.08);
     color: rgb(87, 87, 87);
 }

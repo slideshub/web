@@ -46,8 +46,14 @@ export default class Router {
 
     static async loadRoute() {
         const loggedUser = await Auth.getUser()
-        if (!loggedUser && Router.route !== 'login')
-            Router.goTo("login")
+        if(!loggedUser) {
+            Auth.isLogged = false
+        }
+        else{
+            Auth.isLogged = true
+        }
+        if (!loggedUser && Router.route === 'presentation/edit')
+            Router.goTo("presentations")
         else {
             Auth.loggedUser = loggedUser
             const node = await (new routes[Router.route](Router.query)).render()

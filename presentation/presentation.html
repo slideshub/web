@@ -1,4 +1,28 @@
-{toolbar}
-<div>
-    
+<div class="toolbar">
+    <div>
+        <a href="./#/presentations">
+            <img src="assets/images/logo-white.png" alt="Slideshub logo">
+        </a>
+        <span>{presentation.nombre}</span>
+    </div>
+    <div>
+        <a id="logout">
+            {actionName}
+        </a>
+    </div>
+</div>
+<div class="presentation-slide-container">
+    <div class="button-next">
+        <i class="fas fa-chevron-right"></i>
+    </div>
+    <div class="button-prev">
+        <i class="fas fa-chevron-left"></i>
+    </div>
+    <div class="presentation-slide">
+        <div id="presentation_slide"></div>
+        <div id="next_presentation_slide"></div>
+    </div>
+    <div class="references-container">
+
+    </div>
 </div>

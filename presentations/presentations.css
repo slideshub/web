@@ -12,7 +12,6 @@
     max-width: 220px;
     min-height: 80px;
     max-height: 80px;
-    cursor: pointer;
     background-color: white;
 }
 
@@ -22,6 +21,23 @@
 
 .presentation_item.loading {
     border: none;
+}
+
+.presentation_item-button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.presentation_item-button-container button{
+    padding: 10px;
+    color: gray;
+    border-color: gray;
+}
+
+.presentation_item-button-container button i{
+    margin-right: 10px;
 }
 
 .presentations-title {
