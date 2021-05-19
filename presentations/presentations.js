@@ -6,6 +6,9 @@ import Router from "../router.js";
 import PresentationsAPI from "./presentationsAPI.js";
 
 
+/**
+ * Componente que renderiza y controla la vista presentaciónes propias y públicas
+ */
 export default class Presentations extends Component {
 
     myPresentations = []

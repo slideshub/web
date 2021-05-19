@@ -6,6 +6,11 @@ import Toast from "../common/Toast.js";
 import PresentationsAPI from "../presentations/presentationsAPI.js";
 import Router from "../router.js";
 import SlidesAPI from "../slide/slidesAPI.js";
+
+
+/**
+ * Componente que renderiza y controla la vista de la reproducción de una presentación
+ */
 export default class Presentation extends Component {
 
     node = null

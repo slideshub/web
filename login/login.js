@@ -6,6 +6,9 @@ import Toast from "../common/Toast.js"
 import Auth from "../auth/Auth.js"
 
 
+/**
+ * Componente que renderiza y controla la vista del login
+ */
 export default class Login extends Component {
 
     constructor(querys) {

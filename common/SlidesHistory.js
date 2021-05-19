@@ -1,5 +1,9 @@
 
 
+/**
+ * Contiene el historial de la reproducción de las diferentes presentaciónes
+ * Funciona por medio de hilos, cada hilo es el id de la presentación inicial de una reproducción
+ */
 export default class SlidesHistory {
 
 
@@ -37,12 +41,13 @@ export default class SlidesHistory {
 
 SlidesHistory.presentations = {}
 
+// Cada vez que se refresque o cierre la aplicación guarda la última información del historial
 window.addEventListener('beforeunload', (event) => {
     localStorage.setItem('slidesHistory', JSON.stringify(SlidesHistory.presentations))
 })
 
+// Cada vez que se cargue la aplicación carga la información del historial que estaba guardada
 window.addEventListener('load', () => {
-    console.log(JSON.parse(localStorage.getItem('slidesHistory')))
     if (localStorage.getItem('slidesHistory')) {
         SlidesHistory.presentations = JSON.parse(localStorage.getItem('slidesHistory'))
     }

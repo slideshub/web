@@ -1,6 +1,9 @@
 import Router from "../router.js";
 import AuthAPI from "./AuthAPI.js";
 
+/**
+ * Contiene funciones para el control de la sessión
+ */
 export default class Auth {
 
     static loggedUser = null;

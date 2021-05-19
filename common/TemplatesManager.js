@@ -1,5 +1,9 @@
 let templates = {}
 
+/**
+ * Maneja la obtención de los diferentes archivos HTML del proyecto, guarda los archivos ya obtenidos para automatizar un proceso de
+ * repetitivo
+ */
 export default class TemplatesManager {
 
     static async get(name, object = {}) {
@@ -28,6 +32,8 @@ let Strings = {
     })()
 };
 
+// Configura una nueva función para los string que parcha un string con un objeto de
+// Ejemplo: "{hello} mundo".patch({hello: "hola"}) será igual a "hola mundo"
 String.prototype.patch = function (o) {
     return Strings.patch(this, o);
 }

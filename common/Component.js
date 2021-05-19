@@ -1,4 +1,9 @@
- export default class Component {
+ 
+ 
+/**
+ * Clase que funciona como interfaz para el estándar de los componentes a renderizar
+ */
+export default class Component {
 
     async render() {
 

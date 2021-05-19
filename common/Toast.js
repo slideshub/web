@@ -1,6 +1,10 @@
 
+// Hace que el Toast se cierre automáticamente
 toast.addEventListener('click', ()=> {toast.setAttribute('active', 'false'); clearTimeout(Toast.timeout); Toast.timeout = null})
 
+/**
+ * Maneja un tipo de alerta en la esquina inferior derecha que puede abrirse en cualquier momento
+ */
 export default class Toast {
 
     static timeout = null

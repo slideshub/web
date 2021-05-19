@@ -5,6 +5,10 @@ import AuthAPI from "../auth/AuthAPI.js"
 import Toast from "../common/Toast.js"
 
 
+
+/**
+ * Componente que renderiza y controla la vista del registro de una nuevo usuario
+ */
 export default class Signup extends Component {
 
     constructor(querys) {

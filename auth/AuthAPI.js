@@ -2,6 +2,9 @@ import APIUtils from "../common/APIUtils.js"
 import { API_URL } from "../env.js"
 
 
+/**
+ * Contiene funciones para la conexión con el módulo de Auth del API
+ */
 export default class AuthAPI {
 
     static module = "auth"

@@ -7,6 +7,10 @@ import Router from "../router.js";
 import Slide from "../slide/slide.js";
 
 
+
+/**
+ * Componente que renderiza y controla la vista de la edición de una presentación
+ */
 export default class PresentationEdit extends Component {
 
     node = null

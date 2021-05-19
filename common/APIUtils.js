@@ -1,3 +1,8 @@
+
+
+/**
+ * Facilita la creación de request al API con sus funciones
+ */
 export default class APIUtils {
 
     static async GET(url, query) {

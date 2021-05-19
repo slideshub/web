@@ -3,6 +3,9 @@ import Toast from "../common/Toast.js"
 import { API_URL } from "../env.js"
 
 
+/**
+ * Contiene funciones para la conexión con el módulo de Slides del API
+ */
 export default class SlidesAPI {
 
     static loadedSlides = []

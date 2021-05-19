@@ -6,7 +6,9 @@ import Presentation from "./presentation/presentation.js"
 import Presentations from "./presentations/presentations.js"
 import Signup from "./signup/signup.js"
 
-
+/**
+ * Contiene las que son válidas en la aplicación, y los componentes que renderizan la ruta
+ */
 const routes = {
     'login': Login,
     'signup': Signup,
@@ -16,13 +18,21 @@ const routes = {
     'presentation/edit': PresentationEdit
 }
 
-
+/**
+ * Contiene las funcionalidades para manejar el enrutamiento de la página (SPA)
+ */
 export default class Router {
 
+    /**
+     * Ruta actual después del # y sin los querys
+     */
     static get route() {
         return location.hash.slice(2).split("?")[0]
     }
 
+    /**
+     * Obtiene un objeto con los querys o parámetros de la ruta actual
+     */
     static get query() {
         const text = location.hash.slice(2).split("?")[1]
         let object = {}
@@ -38,6 +48,9 @@ export default class Router {
         return object
     }
 
+    /**
+     * Configura la ruta inicial, si no existe y configura el event listener para que cada vez que cambie el hash, se cargue la ruta correctamente
+     */
     static initialConfig() {
         if (location.hash == "")
             location.assign("./#/presentations")
@@ -46,7 +59,14 @@ export default class Router {
         window.addEventListener("hashchange", Router.loadRoute)
     }
 
+    /**
+     * Renderiza el componente de la nueva ruta en el root (html)
+     */
     static async loadRoute() {
+        if(routes[Router.route] === undefined){
+            Router.goTo('presentations')
+            return
+        }
         const loggedUser = await Auth.getUser()
         if(!loggedUser) {
             Auth.isLogged = false
@@ -66,7 +86,11 @@ export default class Router {
         }
     }
 
-
+    /**
+     * redirije a una nueva ruta definida en los parámetros
+     * @param {*} route Contiene la ruta
+     * @param {*} querys Es un objeto con las querys que se quiere que vayan en la ruta
+     */
     static goTo(route, querys) {
         if (!querys)
             location.hash = `#/${route}`
