@@ -4,6 +4,7 @@
 @import "./loader.css";
 @import "./toast.css";
 @import "../login/login.css";
+@import "../signup/signup.css";
 @import "../presentations/presentations.css";
 @import "../presentation/presentation.css";
 @import "../presentation-edit/presentation-edit.css";

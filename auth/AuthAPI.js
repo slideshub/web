@@ -19,4 +19,10 @@ export default class AuthAPI {
     static getLoggedUser(){
         return APIUtils.GET(`${API_URL}/${AuthAPI.module}/`)
     }
+
+    static signup(name, email, password) {
+        const body = {name, email, password}
+
+        return APIUtils.POST(`${API_URL}/${AuthAPI.module}/signup`, body)
+    }
 }

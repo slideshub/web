@@ -27,6 +27,9 @@ export default class Presentation extends Component {
 
     async getPresentation() {
         this.presentation = await PresentationsAPI.getPresentation(this.id)
+        if(this.presentation == undefined) {
+            Router.goTo('presentations')
+        }
     }
 
     async getPresentationSlides() {
@@ -63,6 +66,15 @@ export default class Presentation extends Component {
                     && SlidesHistory.getPresentationSlide(this.presentation_thread).slide != this.slide_id))
                 SlidesHistory.setPresentationSlide(this.presentation_thread, this.slide_id, this.id)
 
+            try {
+                this.slide.detalles.borde = typeof this.slide.detalles.borde == 'string' ? JSON.parse(this.slide.detalles.borde) : this.slide.detalles.borde
+                this.slide.detalles.fondo = typeof this.slide.detalles.fondo == 'string' ? JSON.parse(this.slide.detalles.fondo) : this.slide.detalles.fondo
+                this.slide.detalles.contenido = this.slide.detalles.contenido == undefined ? this.slide.detalles.content : this.slide.detalles.contenido
+            }
+            catch (e) {
+
+            }
+
             this.chargeSlide(
                 this.slide.detalles.tamanno,
                 this.slide.detalles.borde,
@@ -72,7 +84,7 @@ export default class Presentation extends Component {
         }
         else {
             Toast.open("La lámina no existe", 'error')
-            Router.goTo('presentations')
+            //Router.goTo('presentations')
         }
 
         if (this.presentation.slides == undefined) {
@@ -92,7 +104,7 @@ export default class Presentation extends Component {
 
         slide_container.innerHTML = contenido
 
-        slide_container.style.border = 'solid'
+        slide_container.style.border = 'solid 5px gray'
         slide_container.style.borderWidth = borde.ancho
         slide_container.style.borderColor = borde.color
         slide_container.style.borderRadius = borde.redondeo
@@ -162,7 +174,6 @@ export default class Presentation extends Component {
             if (this.presentation.slides != undefined && this.presentation.slides.length > 2) {
                 const myIndex = this.presentation.slides.findIndex(slide => slide.id == this.slide_id)
                 if (myIndex != null && myIndex < this.presentation.slides.length - 1 && this.presentation.slides[myIndex + 1]) {
-                    //console.log(this.presentation.slides[myIndex + 1])
                     this.goToSlide(this.id, this.presentation.slides[myIndex + 1].id, this.presentation_thread)
                 }
                 else {
@@ -183,10 +194,23 @@ export default class Presentation extends Component {
         const container = this.node.querySelector('.references-container')
         if (this.slide.references.length > 0) {
             this.slide.references.forEach(reference => {
-                SlidesAPI.getSlide(reference.id_lamina_referenciada)
-                PresentationsAPI.getPresentation(reference.id_presentacion_referenciada)
                 const a = document.createElement('a')
+                PresentationsAPI.getPresentation(reference.id_presentacion_referenciada).then(presentation => {
+                    if (!presentation) {
+                        Toast.open("Una presentación referenciada no fue encontrada o es inaccesible", 'info')
+                        a.classList.add('notfound')
+                        a.replaceWith(a.cloneNode(true))
+                    }
+                })
+                SlidesAPI.getSlide(reference.id_lamina_referenciada).then((slide) => {
+                    if (!slide) {
+                        Toast.open("Una diapositiva referenciada no fue encontrada o es inaccesible", 'info')
+                        a.classList.add('notfound')
+                        a.replaceWith(a.cloneNode())
+                    }
+                })   
                 a.addEventListener('click', (() => this.goToSlide(reference.id_presentacion_referenciada, reference.id_lamina_referenciada, this.presentation_thread)).bind(this))
+                
                 a.innerHTML = `${reference.nombre_referencia} | ${reference.nombre_presentacion_referenciada}`
                 container.appendChild(a)
             })
@@ -203,15 +227,25 @@ export default class Presentation extends Component {
     async goToSlide(presentation, slide_id, thread) {
         const slide = await SlidesAPI.getSlide(slide_id)
 
-        const nextSlideContainer = this.node.querySelector('#next_presentation_slide')
+        const nextSlideContainerClass = this.node.querySelector('.next-presentation-slide')
+
+        try {
+            slide.detalles.borde = typeof slide.detalles.borde == 'string' ? JSON.parse(slide.detalles.borde) : slide.detalles.borde
+            slide.detalles.fondo = typeof slide.detalles.fondo == 'string' ? JSON.parse(slide.detalles.fondo) : slide.detalles.fondo
+            slide.detalles.contenido = slide.detalles.contenido == undefined ? slide.detalles.content : slide.detalles.contenido
+        }
+        catch (e) {
+
+        }
 
         this.chargeNextSlideProps(slide.detalles.tamanno, slide.detalles.borde, slide.detalles.fondo, slide.detalles.contenido)
 
-        const transicion = slide.detalles.transicion || 0
-        
-        nextSlideContainer.classList.add(`transition${transicion}`)
+        const transicion = slide.detalles.transicion || 4
 
-        setTimeout(() => Router.goTo(Router.route, {id: presentation, slide: slide_id, thread}), 1000)
+        nextSlideContainerClass.classList.add(`transition${transicion}`)
+        nextSlideContainerClass.style.zIndex = '2'
+
+        setTimeout(() => Router.goTo(Router.route, { id: presentation, slide: slide_id, thread }), 1000)
     }
 
     chargeNextSlideProps(tamanno = "800x600",
@@ -224,9 +258,10 @@ export default class Presentation extends Component {
         nextSlideContainer.style.width = tamanno.split('x')[0] + 'px'
         nextSlideContainer.style.height = tamanno.split('x')[1] + 'px'
 
+
         nextSlideContainer.innerHTML = contenido
 
-        nextSlideContainer.style.border = 'solid'
+        nextSlideContainer.style.border = 'solid 5px gray'
         nextSlideContainer.style.borderWidth = borde.ancho
         nextSlideContainer.style.borderColor = borde.color
         nextSlideContainer.style.borderRadius = borde.redondeo

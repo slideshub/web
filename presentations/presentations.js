@@ -140,16 +140,13 @@ export default class Presentations extends Component {
                     async response => {
                         if (response.ok) {
                             this.getPresentations()
-                            console.log("Se ha creado la presentación")
                             Toast.open("Se ha creado la presentación", 'success')
                             new_presentation_name.value = ''
                             new_presentation_public.checked = false
                             this.node.click()
                         }
                         else {
-                            console.log(await response.json())
                             Toast.open("Ocurrió un error al crear la presentación", 'error')
-                            alert("Error al crear presentación")
                         }
                     }
                 )

@@ -315,8 +315,6 @@ export default class Slide extends Component {
       this.configureTinyMCE(sizeX, sizeY);
       this.configureEventListeners();
       this.setProperties();
-
-      console.log(this.slide);
       return this.node;
     }
     return null;

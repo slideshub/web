@@ -26,8 +26,9 @@ export default class PresentationEdit extends Component {
 
     async getPresentation() {
         this.presentation = await PresentationsAPI.getPresentation(this.id)
-
-        console.log(this.presentation)
+        if(!presentation){
+            Router.goTo('presentations')
+        }
     }
 
     async configLogout() {
@@ -52,7 +53,6 @@ export default class PresentationEdit extends Component {
     }
 
     async chargeSlide(slide_id = null, slide = null) {
-        console.log(slide_id)
         if (!slide_id && this.slides.length > 0) {
             slide_id = this.slides[0].id
         }

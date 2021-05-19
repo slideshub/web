@@ -47,7 +47,6 @@ export default class PresentationsAPI {
             return presentation;
         } else if (response.status == 404) {
             Toast.open((await response.json()).message, "error");
-            Router.goTo("presentations");
         } else {
             Toast.open((await response.json()).message, "error");
         }
