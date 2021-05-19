@@ -26,7 +26,7 @@ export default class PresentationEdit extends Component {
 
     async getPresentation() {
         this.presentation = await PresentationsAPI.getPresentation(this.id)
-        if(!presentation){
+        if(!this.presentation){
             Router.goTo('presentations')
         }
     }
