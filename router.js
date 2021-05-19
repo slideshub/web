@@ -1,6 +1,5 @@
 import Auth from "./auth/Auth.js"
 import Login from "./login/login.js"
-import Main from "./main/main.js"
 import PresentationEdit from "./presentation-edit/presentation-edit.js"
 import Presentation from "./presentation/presentation.js"
 import Presentations from "./presentations/presentations.js"
@@ -12,7 +11,6 @@ import Signup from "./signup/signup.js"
 const routes = {
     'login': Login,
     'signup': Signup,
-    'main': Main,
     'presentations': Presentations,
     'presentation': Presentation,
     'presentation/edit': PresentationEdit
