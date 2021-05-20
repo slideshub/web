@@ -143,6 +143,7 @@ export default class Presentations extends Component {
                     async response => {
                         if (response.ok) {
                             this.getPresentations()
+                            this.getMyPresentations()
                             Toast.open("Se ha creado la presentación", 'success')
                             new_presentation_name.value = ''
                             new_presentation_public.checked = false
