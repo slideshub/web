@@ -117,7 +117,7 @@ export default class Presentation extends Component {
         if (fondo.color2 == undefined)
             slide_container.style.backgroundColor = fondo.color
         else
-            slide_container.style.background = `linear-gradient(to right, ${borde.color}, ${borde.color2})`
+            slide_container.style.background = `linear-gradient(to right, ${fondo.color}, ${fondo.color2})`
 
         this.node.querySelector('.button-prev').addEventListener('click', (async () => {
             const prev = SlidesHistory.getPresentationBackSlide(this.presentation_thread, true)
@@ -274,7 +274,7 @@ export default class Presentation extends Component {
         if (fondo.color2 == undefined)
             nextSlideContainer.style.backgroundColor = fondo.color
         else
-            nextSlideContainer.style.background = `linear-gradient(to right, ${borde.color}, ${borde.color2})`
+            nextSlideContainer.style.background = `linear-gradient(to right, ${fondo.color}, ${fondo.color2})`
     }
 
     async render() {
